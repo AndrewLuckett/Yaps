@@ -1,7 +1,4 @@
 #include "../global/Shorts.h"
-#ifdef _DEBUG
-#include <iostream>
-#endif
 #include "Window.h"
 #include "ShaderGen.h"
 #include "Renderer.h"
@@ -28,9 +25,7 @@ int window::init(const char windowTitle[]) {
 
 	if (glewInit() != GLEW_OK) return -3;
 
-#ifdef _DEBUG
-	std::cout << glGetString(GL_VERSION) << std::endl;
-#endif
+	debugCout(glGetString(GL_VERSION));
 
 	return 0;
 }
