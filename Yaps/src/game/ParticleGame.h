@@ -2,20 +2,20 @@
 #include "../render/Model.h"
 #include "Sprite.h"
 #include "ParticleData.h"
+#include "ParticleSimulator.h"
 #include <vector>
 
 class ParticleGame : public System {
-    public:
+	public:
 		ParticleGame();
-	    int update(timesys::system_clock::duration deltaTime);
-	    int getRenderArr(std::queue<Model> &arr);
-    private:
+		int getRenderArr(std::queue<Model>& arr);
+	private:
 		Model display;
-		Model ParticleGame::scaleModel(Model in, TransMatrix scale);
+		void ParticleGame::scaleModel(Model& in, TransMatrix& scale);
+		void bindSimData(ParticleSimulator sim);
 		float zoom = 1;
 
-		uint width, height;
-		std::vector<ParticleData> data;
-		//ParticleData data [256*256];
+		rect size;
+		ParticleSimulator sim;
 };
 //No objects contained by mazeGame can use mouse positions
