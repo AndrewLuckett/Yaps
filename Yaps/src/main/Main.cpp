@@ -7,7 +7,7 @@
 #include <queue>
 
 int main() {
-	window::init("Maze Game - Andrew Luckett 2019");
+	window::init("Yet Another Particle Sim - Andrew Luckett 2021");
 	window::myinit();
 
 	glfwSwapInterval(0); //No vsync
@@ -23,16 +23,16 @@ int main() {
 	while (window::isRunning()) {
 		gameInst.update(std::chrono::system_clock::duration());
 		gameInst.getRenderArr(renderArr);
-		
+
 		renderer::clearScreen();
 
-		while(!renderArr.empty()){
+		while (!renderArr.empty()) {
 			renderer::draw(renderArr.front());
 			renderArr.pop();
 		}
-		
+
 		renderer::pushToScreen();
-		
+
 	}
 
 	gameInst.cleanup();
