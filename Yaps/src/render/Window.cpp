@@ -25,7 +25,7 @@ int window::init(const char windowTitle[]) {
 
 	if (glewInit() != GLEW_OK) return -3;
 
-	debugCout(glGetString(GL_VERSION));
+	debugPrint(glGetString(GL_VERSION));
 
 	return 0;
 }

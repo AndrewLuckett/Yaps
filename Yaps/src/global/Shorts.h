@@ -8,11 +8,11 @@
 
 #ifdef _DEBUG
 	#include <iostream>
-	#define debugCout(v) std::cout << v << std::endl;
+	#define debugPrint(v) std::cout << v << std::endl;
 #endif
 
-#ifndef debugCout
-	#define debugCout(v)
+#ifndef debugPrint
+	#define debugPrint(v)
 #endif
 
 

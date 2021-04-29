@@ -156,7 +156,7 @@
     <ClInclude Include="src\core\GameMain.h" />
     <ClInclude Include="src\core\input.h" />
     <ClInclude Include="src\game\ParticleData.h" />
-    <ClInclude Include="src\game\ParticleProperties.h" />
+    <ClInclude Include="src\game\ParticleTypes.h" />
     <ClInclude Include="src\game\ParticleSimulator.h" />
     <ClInclude Include="src\game\Sprite.h" />
     <ClInclude Include="src\global\Matrix.h" />
