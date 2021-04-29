@@ -45,17 +45,17 @@ void ParticleSimulator::updateParticles() {
 	//data[65] = ParticleData((uint)ParticleNames::Sand);
 	//data[32] = ParticleData((uint)ParticleNames::Water);
 
+	// Reset move status
+	for (int x = 0; x < width; x++) {
+		for (int y = height - 1; y >= 0; y--) {
+			getParticle(x, y)->moved = false;
+		}
+	}
 
 	// Update full screen
 	for (int x = 0; x < width; x++) {
 		for (int y = height - 1; y >= 0; y--) {
 			updateParticle(x, y);
-		}
-	}
-	// Reset move status
-	for (int x = 0; x < width; x++) {
-		for (int y = height - 1; y >= 0; y--) {
-			getParticle(x, y)->moved = false;
 		}
 	}
 	//framer -= 1;
@@ -74,7 +74,7 @@ void ParticleSimulator::updateParticle(int x, int y) {
 	if (prop.fluid == 1) {
 		if (doFluid(x, y)) return;
 	}
-	if (prop.gravity >= 1 && y + 1 < height) {
+	if (prop.gravity >= 1 && prop.fluid == 0 && y + 1 < height) {
 		if (doSink(x, y)) return;
 	}
 	//if(prop.boyand == 0){
