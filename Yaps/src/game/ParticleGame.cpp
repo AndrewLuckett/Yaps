@@ -3,6 +3,7 @@
 #include "Engine/render/Vao.h"
 #include "Engine/render/Window.h"
 #include "Engine/core/input.h"
+#include "Engine/render/ShaderGen.h"
 
 ParticleGame::ParticleGame() {
 	size = { 256,256 };
@@ -13,13 +14,15 @@ ParticleGame::ParticleGame() {
 	display = getGenericModel();
 	glGenTextures(1, &display.textureId);
 
+	uint prog = GenerateProgram("res/shaders/core.vert", "res/shaders/particle.frag");
+	display.programId = prog;
+
 	glBindTexture(GL_TEXTURE_2D, display.textureId);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 	bindSimData(sim);
-	glBindTexture(GL_TEXTURE_2D, 0);
 
 	//display.textureId = loadTexture("res/textures/notes.png", GL_NEAREST);
 }
@@ -37,9 +40,7 @@ int ParticleGame::getRenderArr(std::queue<Model>& arr) {
 		scale.mid.y *= aspect;
 	}
 
-	glBindTexture(GL_TEXTURE_2D, display.textureId);
 	bindSimData(sim);
-	glBindTexture(GL_TEXTURE_2D, 0);
 
 	display.transform = scale;
 	arr.push(display);
@@ -51,7 +52,9 @@ void ParticleGame::scaleModel(Model& in, TransMatrix& scale) {
 }
 
 void ParticleGame::bindSimData(ParticleSimulator sim) {
+	glBindTexture(GL_TEXTURE_2D, display.textureId);
 	ParticleData* datap = 0;
 	size = sim.getData(datap);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, size.x, size.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, datap);
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
