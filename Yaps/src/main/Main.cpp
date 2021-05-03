@@ -1,8 +1,8 @@
-#include "../global/Shorts.h"
-#include "../render/Window.h"
-#include "../render/Renderer.h"
-#include "../core/GameMain.h"
-#include "../core/FrameCounter.h"
+#include "Engine/global/Shorts.h"
+#include "Engine/render/Window.h"
+#include "Engine/render/Renderer.h"
+#include "Engine/core/GameMain.h"
+#include "Engine/core/FrameCounter.h"
 #include "../game/ParticleGame.h"
 #include <queue>
 
@@ -10,7 +10,7 @@ int main() {
 	window::init("Yet Another Particle Sim - Andrew Luckett 2021");
 	window::myinit();
 
-	glfwSwapInterval(0); //No vsync
+	//glfwSwapInterval(0); //No vsync
 
 	GameMain gameInst = GameMain(); //Top level system
 

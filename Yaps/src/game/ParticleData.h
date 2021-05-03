@@ -1,12 +1,12 @@
 #pragma once
-#include "../global/Shorts.h"
+#include "Engine/global/Shorts.h"
 
 typedef struct ParticleProperties {
 	uint gravity : 2; // Will gravity cause it to move? (First for better packing)
 	//0 = No gravity ever, 1 = Normal gravity always
 	//2 = Reverse gravity always, 3 = Uses gravity once moving
-	bool solid : 1; // Will it block moving particles
-	bool movable : 1; // Can it move?
+	bool solid : 1; // Can a particle move into it?
+	bool movable : 1; // Can it move on its own?
 	bool fluid : 1; // Will it disperse laterally?
 	bool flammable : 1; // Can it burn?
 	bool boilable : 1; // Can it produce steam?

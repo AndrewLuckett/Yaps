@@ -1,4 +1,4 @@
-#include "../core/System.h"
+#include "Engine/core/System.h"
 #include "ParticleData.h"
 #include <vector>
 
@@ -8,7 +8,7 @@ class ParticleSimulator : public System {
 		ParticleSimulator(int& width, int& height);
 		int update(timesys::system_clock::duration deltaTime);
 		rect getData(ParticleData*& datap); // Returns raw array pointer to data
-		float updateTime = 33;// 200; // ms
+		float updateTime = 0;// 33;// ms
 	private:
 		void updateParticles();
 		void updateParticle(int x, int y);

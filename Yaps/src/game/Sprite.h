@@ -1,6 +1,6 @@
 #pragma once
-#include "../global/Shorts.h"
-#include "../render/Model.h"
+#include "Engine/global/Shorts.h"
+#include "Engine/render/Model.h"
 
 Model getGenericModel();
 void createGenericModel();

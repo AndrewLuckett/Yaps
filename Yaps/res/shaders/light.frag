@@ -8,9 +8,10 @@ uniform sampler2D texSampler;
 
 void main() {
     vec4 raw = texture(texSampler,texCo);
-    //RGBA
+    if (raw[3] != 0){
+        raw /= 1.25;
+    }
     raw[3] = 1;
-    //Full alpha ignore particle velocity
+
     colour = raw;
-    //colour = vec4(1.0,0.0,1.0,1.0);
 };

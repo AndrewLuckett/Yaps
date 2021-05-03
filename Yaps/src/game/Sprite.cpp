@@ -1,6 +1,6 @@
 #include "Sprite.h"
-#include "../render/Vao.h"
-#include "../render/Texture.h"
+#include "Engine/render/Vao.h"
+#include "Engine/render/Texture.h"
 
 Model gen;
 bool created = false;
@@ -14,9 +14,9 @@ Model getGenericModel() {
 
 void createGenericModel() {
 	std::vector<vec2> a = { {-1, 1 },
-						    { 1, 1 },
-						    { 1,-1 },
-						    {-1,-1 } };
+							{ 1, 1 },
+							{ 1,-1 },
+							{-1,-1 } };
 	std::vector<vec2> t = { { 0, 0 }, { 1, 0 }, { 1, 1 }, { 0, 1 } };
 
 	gen = createVAO(); //Create base model

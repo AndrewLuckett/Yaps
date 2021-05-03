@@ -16,7 +16,7 @@ ParticleSimulator::ParticleSimulator(int& width, int& height) {
 	debugPrint("Data Bytes: " << data.capacity() * sizeof(ParticleData));
 
 	for (int x = 0; x < width; x++) {
-		for (int y = height - 1; y >= 100; y--) {
+		for (int y = height - 1; y >= height-25; y--) {
 			*getParticle(x, y) = ParticleData((uint)ParticleNames::Water);
 		}
 	}
@@ -41,7 +41,7 @@ void ParticleSimulator::updateParticles() {
 	//if (framer < 0) {
 	//	framer = height - 1;
 	//}
-	data[64] = ParticleData((uint)ParticleNames::Sand);
+	data[(int)width/2] = ParticleData((uint)ParticleNames::Sand);
 	//data[65] = ParticleData((uint)ParticleNames::Sand);
 	//data[32] = ParticleData((uint)ParticleNames::Water);
 

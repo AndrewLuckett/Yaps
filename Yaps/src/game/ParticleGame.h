@@ -1,5 +1,5 @@
-#include "../core/System.h"
-#include "../render/Model.h"
+#include "Engine/core/System.h"
+#include "Engine/render/Model.h"
 #include "Sprite.h"
 #include "ParticleData.h"
 #include "ParticleSimulator.h"

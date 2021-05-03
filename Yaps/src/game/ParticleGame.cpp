@@ -1,13 +1,13 @@
 #include "ParticleGame.h"
-#include "../render/Texture.h"
-#include "../render/Vao.h"
-#include "../render/Window.h"
-#include "../core/input.h"
+#include "Engine/render/Texture.h"
+#include "Engine/render/Vao.h"
+#include "Engine/render/Window.h"
+#include "Engine/core/input.h"
 
 uint count = 0;
 
 ParticleGame::ParticleGame() {
-	size = { 256, 256 };
+	size = { 256,256 };
 
 	sim = ParticleSimulator(size.x, size.y);
 	addSubSystem(&sim);
@@ -16,7 +16,7 @@ ParticleGame::ParticleGame() {
 	glGenTextures(1, &display.textureId);
 
 	glBindTexture(GL_TEXTURE_2D, display.textureId);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
@@ -41,6 +41,7 @@ int ParticleGame::getRenderArr(std::queue<Model>& arr) {
 
 	glBindTexture(GL_TEXTURE_2D, display.textureId);
 	bindSimData(sim);
+	glBindTexture(GL_TEXTURE_2D, 0);
 
 	std::queue<Model> sub;
 	System::getRenderArr(sub);
