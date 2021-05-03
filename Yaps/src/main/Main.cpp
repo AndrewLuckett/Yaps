@@ -1,4 +1,5 @@
 #include "Engine/global/Shorts.h"
+#include "Engine/global/Version.h"
 #include "Engine/render/Window.h"
 #include "Engine/render/Renderer.h"
 #include "Engine/core/GameMain.h"
@@ -7,6 +8,8 @@
 #include <queue>
 
 int main() {
+	debugPrint("Engine Version: " << Engine::versionToString(Engine::CurrentVersion));
+
 	window::init("Yet Another Particle Sim - Andrew Luckett 2021");
 	window::myinit();
 
