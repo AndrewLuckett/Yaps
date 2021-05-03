@@ -4,8 +4,6 @@
 #include "Engine/render/Window.h"
 #include "Engine/core/input.h"
 
-uint count = 0;
-
 ParticleGame::ParticleGame() {
 	size = { 256,256 };
 
@@ -43,15 +41,8 @@ int ParticleGame::getRenderArr(std::queue<Model>& arr) {
 	bindSimData(sim);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	std::queue<Model> sub;
-	System::getRenderArr(sub);
-	sub.push(display);
-
-	while (!sub.empty()) {
-		scaleModel(sub.front(), scale);
-		arr.push(sub.front());
-		sub.pop();
-	}
+	display.transform = scale;
+	arr.push(display);
 	return 0;
 }
 
