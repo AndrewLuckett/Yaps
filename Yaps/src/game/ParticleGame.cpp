@@ -4,6 +4,7 @@
 #include "Engine/render/Window.h"
 #include "Engine/core/input.h"
 #include "Engine/render/ShaderGen.h"
+#include "Engine/render/Renderer.h"
 
 ParticleGame::ParticleGame() {
 	size = { 256,256 };
@@ -39,10 +40,10 @@ int ParticleGame::getRenderArr(std::queue<Model>& arr) {
 	} else {
 		scale.mid.y *= aspect;
 	}
+	renderer::loadGlobalTransform(display.programId, scale);
 
 	bindSimData(sim);
 
-	display.transform = scale;
 	arr.push(display);
 	return 0;
 }
